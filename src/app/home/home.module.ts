@@ -13,7 +13,6 @@ import { HomeComponent } from './home.component';
 
 import { translations as en } from './locale/en';
 import { translations as de } from './locale/de';
-import { translations } from '../locale/en';
 
 const routes: Routes = [{ path: '', component: HomeComponent }];
 

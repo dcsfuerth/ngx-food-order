@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
-import { entitiesReducer } from './backend/entities.reducer';
 
 import { PRODUCTS_COLLECTION_KEY } from './products/backend/products.constants';
 import { actionNames } from './products/backend/products.actions';
@@ -38,11 +37,6 @@ import { actionNames } from './products/backend/products.actions';
     {
       provide: APP_TRANSLATIONS,
       useValue: { name: 'en', translations: en },
-      multi: true
-    },
-    {
-      provide: APP_REDUCERS,
-      useValue: { name: 'entities', reducer: entitiesReducer },
       multi: true
     }
   ]

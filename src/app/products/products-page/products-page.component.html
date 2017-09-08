@@ -1,5 +1,26 @@
-<h1>Products</h1>
+<h1>{{ 'PRODUCTS_LIST_TITLE' | translate }}</h1>
 
-<ul *ngFor="let product of products$ | async" class="list-group">
-  <li class="list-group-item">{{ product.label }} ({{ product.price | currency:'EUR':true }})</li>
-</ul>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>{{ 'PRODUCTS_ARTICLE_ID' | translate }}</th>
+      <th>{{ 'PRODUCTS_LABEL' | translate }}</th>
+      <th>{{ 'PRODUCTS_PRICE' | translate }}</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products$ | async">
+      <td>
+        <a routerLink="/products/{{ product.id }}/edit"> {{ product.articleId }}</a>
+      </td>
+      <td>{{ product.label }}</td>
+      <td>{{ product.price | currency:'EUR':true }}</td>
+      <td>
+        <button type="button" class="btn btn-danger" [disabled]="updating" (click)="deleteProduct(product)">{{ 'PRODUCTS_LIST_DELETE' | translate }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/products/new">{{ 'PRODUCTS_LIST_ADD' | translate }}</a>

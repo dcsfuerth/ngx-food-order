@@ -26,21 +26,27 @@
   "products": [
     {
       "id": 1,
-      "articleId": "11201",
+      "articleId": "a-11201",
       "label": "\"Falscher Hase\"-Pfanne",
-      "price": 8.95
-    },
-    {
-      "id": 2,
-      "articleId": "01613",
-      "label": "Hähnchen-Paella",
       "price": 7.95
     },
     {
+      "id": 2,
+      "articleId": "a-01613",
+      "label": "Hähnchen-Paella",
+      "price": 9.75
+    },
+    {
       "id": 3,
-      "articleId": "01676",
+      "articleId": "a-01676",
       "label": "Schlemmer-Menü: Rinderroulade \"Hausfrauen Art\"",
       "price": 6.95
+    },
+    {
+      "id": 4,
+      "articleId": "a-44444",
+      "label": "Pizza",
+      "price": 6.5
     }
   ]
 }

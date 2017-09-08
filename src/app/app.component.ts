@@ -7,10 +7,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private translate: TranslateService,
-    private localeService: LocaleService
-  ) {
+  constructor(private translate: TranslateService, private localeService: LocaleService) {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.logBuildSetup(event.lang);
     });
@@ -20,11 +17,6 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     console.timeEnd('bootstrap angular');
     this.logBuildSetup(this.translate.currentLang);
-
-    setTimeout(() => {
-      this.translate.use('en');
-    }, 5000);
-
     // window['app'] = this;
   }
 

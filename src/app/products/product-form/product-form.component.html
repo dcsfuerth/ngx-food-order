@@ -1,0 +1,33 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="submitForm()">
+
+    <div class="form-group row">
+      <label for="inputArticleId" class="col-sm-2 col-form-label">{{ 'PRODUCTS_ARTICLE_ID' | translate }}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputArticleId" placeholder="a-12345" formControlName="articleId" [ngClass]="{ 'is-valid': articleIdControl.valid, 'is-invalid': articleIdControl.invalid }">
+        <div class="invalid-feedback" *ngIf="articleIdControl.errors?.required && articleIdControl.touched">{{ 'PRODUCTS_ERRORS_REQUIRED' | translate }}</div>
+        <div class="invalid-feedback" *ngIf="articleIdControl.errors?.pattern && articleIdControl.touched">{{ 'PRODUCTS_ERRORS_ARTICLE_ID_PATTERN' | translate }}</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="inputLabel" class="col-sm-2 col-form-label">{{ 'PRODUCTS_LABEL' | translate }}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputLabel" placeholder="Article label" formControlName="label" [ngClass]="{ 'is-valid': labelControl.valid, 'is-invalid': labelControl.invalid }">
+        <div class="invalid-feedback" *ngIf="labelControl.invalid && labelControl.touched">{{ 'PRODUCTS_ERRORS_LABEL' | translate }}</div>
+      </div>
+    </div>
+
+    <div class="form-group row has-danger">
+      <label for="inputPrice" class="col-sm-2 col-form-label">{{ 'PRODUCTS_PRICE' | translate }} €</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control is-invalid" id="inputPrice" placeholder="5.95" step="0.05" min="0.05" formControlName="price"
+          [ngClass]="{ 'is-valid': priceControl.valid, 'is-invalid': priceControl.invalid }">
+        <div class="invalid-feedback" *ngIf="priceControl.invalid && priceControl.touched">{{ 'PRODUCTS_ERRORS_PRICE' | translate:{ value: 0 } }}</div>
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ 'PRODUCTS_SAVE' | translate }}</button>
+  </form>
+</div>

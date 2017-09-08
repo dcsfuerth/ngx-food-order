@@ -1,12 +1,12 @@
-import { BatchAction } from 'redux-batched-actions';
+import { UPDATE_LOCATION } from '@angular-redux/router';
 import { ActionsObservable } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { extractCollectionsEpicFactory, IAction } from '@dcs/ngx-utils';
+import { IAction } from '@dcs/ngx-utils';
 
 import { actionNames } from './products.actions';
-import { PRODUCTS_COLLECTION_KEY } from './products.constants';
 
-export const productsCollectionEpic = extractCollectionsEpicFactory(
-  [actionNames.readNext, actionNames.readOneNext],
-  PRODUCTS_COLLECTION_KEY
-);
+export function redirectAfterSaveEpic(actions$: ActionsObservable<IAction>): Observable<IAction> {
+  return actions$
+    .ofType(actionNames.updateNext, actionNames.createNext)
+    .mapTo({ type: UPDATE_LOCATION, payload: '/products' });
+}
