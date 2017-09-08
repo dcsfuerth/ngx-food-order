@@ -1,0 +1,46 @@
+{
+  "order": {
+    "items": [
+      {
+        "user": "MR",
+        "productId": "1",
+        "numberOfProducts": 2
+      },
+      {
+        "user": "MR",
+        "productId": "3",
+        "numberOfProducts": 1
+      },
+      {
+        "user": "DV",
+        "productId": "2",
+        "numberOfProducts": 2
+      },
+      {
+        "user": "AW",
+        "productId": "3",
+        "numberOfProducts": 4
+      }
+    ]
+  },
+  "products": [
+    {
+      "id": 1,
+      "articleId": "11201",
+      "label": "\"Falscher Hase\"-Pfanne",
+      "price": 8.95
+    },
+    {
+      "id": 2,
+      "articleId": "01613",
+      "label": "Hähnchen-Paella",
+      "price": 7.95
+    },
+    {
+      "id": 3,
+      "articleId": "01676",
+      "label": "Schlemmer-Menü: Rinderroulade \"Hausfrauen Art\"",
+      "price": 6.95
+    }
+  ]
+}

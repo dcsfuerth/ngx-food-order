@@ -7,11 +7,10 @@ import {
 } from '@dcs/ngx-utils';
 export default class ProductionEnvironment extends DefaultEnvironment
   implements IEnvironment {
-  public apiUrl = 'http://jsonplaceholder.typicode.com';
+  public apiUrl = '//localhost:3001';
   public throwOnSchemaError = true;
-  public autoUpdate: IAutoUpdateSettings = 'never';
-  public updateMessage = 'Update now?';
-  public pageTitle = 'DCS Angular Starter (production mode)';
+  public autoUpdate: IAutoUpdateSettings = 'confirm';
+  public pageTitle = 'DCS Food Order (production mode)';
   public base = '/';
   public additionalEnhancers: GenericStoreEnhancer[] = [persistStateEnhancer()];
 }

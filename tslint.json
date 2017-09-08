@@ -25,7 +25,7 @@
       "check-type",
       "check-preblock"
     ],
-    "angular-whitespace": [true, "check-interpolation", "check-pipe"],
+    "angular-whitespace": [true, "check-interpolation"],
     "banana-in-box": true,
     "templates-no-negated-async": true,
     "directive-selector": [true, "attribute", "sg", "camelCase"],

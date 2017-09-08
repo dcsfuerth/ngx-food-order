@@ -8,9 +8,9 @@ import {
 
 export default class DevelopmentEnvironment extends DefaultEnvironment
   implements IEnvironment {
-  public apiUrl = 'http://jsonplaceholder.typicode.com';
+  public apiUrl = '//localhost:3001';
   public throwOnSchemaError = false;
-  public pageTitle = 'DCS Angular Starter';
+  public pageTitle = 'DCS Food Order (DEVELOPMENT)';
   public base = '/';
 
   public additionalMiddleware: Middleware[] = [loggerMiddleware];
