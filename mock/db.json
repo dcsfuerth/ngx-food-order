@@ -48,5 +48,19 @@
       "label": "Pizza",
       "price": 6.5
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Arthur",
+      "lastname": "Dent",
+      "email": "arthur@earth.com"
+    },
+    {
+      "id": 2,
+      "firstname": "Ford",
+      "lastname": "Perfect",
+      "email": "ford@betelgeuse.com"
+    }
   ]
 }

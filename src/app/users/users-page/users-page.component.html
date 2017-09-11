@@ -1,0 +1,26 @@
+<h1>{{ 'USERS_TITLE' | translate }}</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>{{ 'USERS_ID' | translate }}</th>
+      <th>{{ 'USERS_NAME' | translate }}</th>
+      <th>{{ 'USERS_EMAIL' | translate }}</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <a routerLink="/users/{{ user.id }}/edit"> {{ user.id }}</a>
+      </td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button type="button" class="btn btn-danger" [disabled]="updating$ | async" (click)="deleteUser(user)">{{ 'USERS_LIST_DELETE' | translate }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/users/new">{{ 'USERS_LIST_ADD' | translate }}</a>

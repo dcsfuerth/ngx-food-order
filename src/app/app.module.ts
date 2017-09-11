@@ -14,6 +14,7 @@ import { ProductsModule } from './products/products.module';
 
 import { PRODUCTS_COLLECTION_KEY } from './products/backend/products.constants';
 import { actionNames } from './products/backend/products.actions';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,7 +26,8 @@ import { actionNames } from './products/backend/products.actions';
     BrowserModule,
     AppTranslateModule, // App modules
     HomeModule,
-    ProductsModule
+    ProductsModule,
+    UsersModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },

@@ -1,14 +1,10 @@
 import { OrderedSet, fromJS } from 'immutable';
 import {
   normalizedCollectionReducerFactory,
-  IAction,
-  ImmutableState,
+  normalizedEntityReducerFactory,
   ISubStateReducer,
   INormalizedCollectionState,
-  INormalizedEntityAction,
-  mergeState,
-  INormalizedEntityState,
-  normalizedEntityReducerFactory
+  INormalizedEntityState
 } from '@dcs/ngx-utils';
 
 import { PRODUCTS_COLLECTION_KEY } from './products.constants';

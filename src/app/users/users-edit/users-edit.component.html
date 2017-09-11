@@ -1,0 +1,3 @@
+<h1>{{ 'USERS_EDIT_TITLE' | translate:user }}</h1>
+
+<dcs-users-form [user]="user" [updating]="updating$ | async" (onFormSubmit)="updateUser($event)"></dcs-users-form>
