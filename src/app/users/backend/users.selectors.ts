@@ -2,7 +2,7 @@ import { List, Map } from 'immutable';
 import { Selector } from 'reselect';
 import { createSelector, IState } from '@dcs/ngx-utils';
 
-import { User } from './users.class';
+import { User } from './user.class';
 
 export const loadingSelector = (state: IState): boolean => state.getIn(['users', 'loading']);
 export const loadedSelector = (state: IState): boolean => state.getIn(['users', 'loaded']);
@@ -14,7 +14,11 @@ export const usersSelector: Selector<IState, List<User>> = createSelector([rawUs
   return users.map(item => new User(item));
 });
 
+export const usersMapSelector: Selector<IState, Map<string, User>> = createSelector([rawUsersSelector], users => {
+  return users.reduce((acc, item) => {
+    return acc.set(String(item.get('id')), new User(item));
+  }, Map());
+});
 export const currentUserSelector: Selector<IState, User> = createSelector([rawUserSelector], user => {
-  console.log('wfrergrtg', user);
   return new User(user);
 });

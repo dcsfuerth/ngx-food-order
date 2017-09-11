@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
-import { User } from '../backend/users.class';
+import { User } from '../backend/user.class';
 import { UsersActions } from '../backend/users.actions';
 import { updatingSelector } from '../backend/users.selectors';
 

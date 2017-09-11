@@ -1,0 +1,24 @@
+<h1>Order</h1>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>User</th>
+      <th>Price item</th>
+      <th>Price sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of order">
+      <td>{{ item.product.label }}</td>
+      <td>{{ item.user.name }}</td>
+      <td class="text-right">{{ item.product.price | currency:'EUR':true }}</td>
+      <td class="text-right">{{ item.priceSum | currency:'EUR':true }}</td>
+    </tr>
+    <tr>
+      <th colspan="3">Sum</th>
+      <td class="text-right">{{ priceTotal | currency:'EUR':true }}</td>
+    </tr>
+  </tbody>
+</table>

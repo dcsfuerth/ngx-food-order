@@ -2,15 +2,15 @@ import { List, fromJS } from 'immutable';
 import { createImmutableState, IAction, IState, ImmutableState, mergeState } from '@dcs/ngx-utils';
 import { usersReadActions, usersCreateActions, usersUpdateActions, usersDeleteActions } from './users.actions';
 
-export interface IUsersState {
+export type IUsersState = ImmutableState<{
   entities: List<any>;
   loading: boolean;
   loaded: boolean;
   updating: boolean;
   error: any;
-}
+}>;
 
-export const initialState: ImmutableState<IUsersState> = createImmutableState({
+export const initialState: IUsersState = createImmutableState({
   entities: [],
   loading: false,
   loaded: false,
@@ -18,10 +18,7 @@ export const initialState: ImmutableState<IUsersState> = createImmutableState({
   error: null
 });
 
-export function usersReducer(
-  state: ImmutableState<IUsersState> = initialState,
-  action: IAction
-): ImmutableState<IUsersState> {
+export function usersReducer(state: IUsersState = initialState, action: IAction): IUsersState {
   switch (action.type) {
     case usersReadActions.start:
       return mergeState(state, { loading: true, loaded: false, error: null });

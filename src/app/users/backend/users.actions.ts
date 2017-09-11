@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestService, IAction, generateAsyncActionNames, IAsyncActionNames } from '@dcs/ngx-utils';
 import { dispatch } from '@angular-redux/store';
-import { User } from './users.class';
+import { User } from './user.class';
 
 export const usersReadActions: IAsyncActionNames = generateAsyncActionNames('USERS_READ');
 export const usersReadOneActions: IAsyncActionNames = generateAsyncActionNames('USERS_READ_ONE');

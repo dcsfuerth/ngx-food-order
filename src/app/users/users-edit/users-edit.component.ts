@@ -5,7 +5,7 @@ import { select } from '@angular-redux/store';
 import { ContainerComponent } from '@dcs/ngx-utils';
 
 import { UsersActions } from '../backend/users.actions';
-import { User } from '../backend/users.class';
+import { User } from '../backend/user.class';
 import { currentUserSelector, updatingSelector } from '../backend/users.selectors';
 
 @Component({

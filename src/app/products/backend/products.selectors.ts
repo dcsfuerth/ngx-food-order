@@ -1,7 +1,7 @@
 import { OrderedSet } from 'immutable';
 import {
   normalizedCollectionSelectorsFactory,
-  normalizedEntitiesSelectorFactory,
+  normalizedEntitySelectorFactory,
   INormalizedCollectionSelectors,
   INormalizedEntitySelectors
 } from '@dcs/ngx-utils';
@@ -16,7 +16,7 @@ export const productsSelectors: INormalizedCollectionSelectors<Product> = normal
   productsSchema
 );
 
-export const currentProductSelectors: INormalizedEntitySelectors<Product> = normalizedEntitiesSelectorFactory(
+export const currentProductSelectors: INormalizedEntitySelectors<Product> = normalizedEntitySelectorFactory(
   PRODUCTS_ENTITY_KEY,
   Product,
   productSchema

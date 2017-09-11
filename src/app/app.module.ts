@@ -11,10 +11,8 @@ import { HeaderComponent } from './header/header.component';
 
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
-
-import { PRODUCTS_COLLECTION_KEY } from './products/backend/products.constants';
-import { actionNames } from './products/backend/products.actions';
 import { UsersModule } from './users/users.module';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -27,7 +25,8 @@ import { UsersModule } from './users/users.module';
     AppTranslateModule, // App modules
     HomeModule,
     ProductsModule,
-    UsersModule
+    UsersModule,
+    OrderModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'de' },
