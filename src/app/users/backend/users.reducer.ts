@@ -1,6 +1,11 @@
 import { List, fromJS } from 'immutable';
-import { createImmutableState, IAction, IState, ImmutableState, mergeState } from '@dcs/ngx-utils';
-import { usersReadActions, usersCreateActions, usersUpdateActions, usersDeleteActions } from './users.actions';
+import { createImmutableState, IAction, ImmutableState, mergeState } from '@dcs/ngx-utils';
+import {
+  usersReadActions,
+  usersCreateActions,
+  usersUpdateActions,
+  usersDeleteActions
+} from './users.actions';
 
 export type IUsersState = ImmutableState<{
   entities: List<any>;
@@ -27,13 +32,20 @@ export function usersReducer(state: IUsersState = initialState, action: IAction)
       return mergeState(state, { loading: false, loaded: true, entities: action.payload });
 
     case usersReadActions.error:
-      return mergeState(state, { loading: false, entities: initialState.get('entities'), error: action.payload });
+      return mergeState(state, {
+        loading: false,
+        entities: initialState.get('entities'),
+        error: action.payload
+      });
 
     case usersCreateActions.start:
       return mergeState(state, { updating: true });
 
     case usersCreateActions.next:
-      return mergeState(state, { updating: false, entities: state.get('entities').push(fromJS(action.payload)) });
+      return mergeState(state, {
+        updating: false,
+        entities: state.get('entities').push(fromJS(action.payload))
+      });
 
     case usersUpdateActions.start:
       return mergeState(state, { updating: true });

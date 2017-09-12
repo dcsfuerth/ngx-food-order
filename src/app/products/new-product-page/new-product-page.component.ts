@@ -1,6 +1,5 @@
 import { ProductsActions } from '../backend/products.actions';
 import { Product } from '../backend/product.class';
-import { selector } from 'rxjs/operator/publish';
 import { Component, OnInit } from '@angular/core';
 import { ContainerComponent } from '@dcs/ngx-utils';
 

@@ -1,30 +1,33 @@
 {
-  "order": [
-    {
-      "id": 1,
-      "userId": 1,
-      "productId": 1,
-      "numberOfProducts": 2
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "productId": 3,
-      "numberOfProducts": 1
-    },
-    {
-      "id": 3,
-      "userId": 2,
-      "productId": 2,
-      "numberOfProducts": 2
-    },
-    {
-      "id": 4,
-      "userId": 2,
-      "productId": 3,
-      "numberOfProducts": 4
-    }
-  ],
+  "order": {
+    "items": [
+      {
+        "productId": 1,
+        "userId": 1,
+        "numberOfProducts": 2
+      },
+      {
+        "productId": 3,
+        "userId": 1,
+        "numberOfProducts": 4
+      },
+      {
+        "productId": 2,
+        "userId": "2",
+        "numberOfProducts": 1
+      },
+      {
+        "productId": "4",
+        "userId": "2",
+        "numberOfProducts": 5
+      },
+      {
+        "productId": "4",
+        "userId": "1",
+        "numberOfProducts": 1
+      }
+    ]
+  },
   "products": [
     {
       "id": 1,
@@ -47,7 +50,7 @@
     {
       "id": 4,
       "articleId": "a-44444",
-      "label": "Pizza",
+      "label": "Pizza Salami",
       "price": 6.5
     }
   ],

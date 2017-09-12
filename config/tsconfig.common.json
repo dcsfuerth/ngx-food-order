@@ -12,7 +12,7 @@
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "strict": true,
     "lib": ["dom", "es2015"]
   }

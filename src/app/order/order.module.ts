@@ -9,10 +9,21 @@ import { orderReducer } from './backend/order.reducer';
 import { OrderActions } from './backend/order.actions';
 
 import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderSubnavigationComponent } from './order-subnavigation/order-subnavigation.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { OrderEditComponent } from './order-edit/order-edit.component';
 
 @NgModule({
-  declarations: [OrderPageComponent],
-  providers: [OrderActions, { provide: APP_REDUCERS, useValue: { name: 'order', reducer: orderReducer }, multi: true }],
+  declarations: [
+    OrderPageComponent,
+    OrderSubnavigationComponent,
+    OrderSummaryComponent,
+    OrderEditComponent
+  ],
+  providers: [
+    OrderActions,
+    { provide: APP_REDUCERS, useValue: { name: 'order', reducer: orderReducer }, multi: true }
+  ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(routes)]
 })
 export class OrderModule {}

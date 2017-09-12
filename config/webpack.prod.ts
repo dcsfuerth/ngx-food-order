@@ -1,10 +1,8 @@
 import * as webpackMerge from 'webpack-merge';
-import * as webpack from 'webpack';
 
-import { hasProcessFlag, hasNpmFlag, root } from './helpers';
+import { hasNpmFlag, root } from './helpers';
 import commonConfig from './webpack.common';
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Uglify = require('uglifyjs-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 

@@ -1,5 +1,4 @@
 import * as webpack from 'webpack';
-import * as path from 'path';
 import { root } from './helpers';
 import * as polyfills from './polyfills';
 
@@ -27,8 +26,7 @@ const extractSASS = new ExtractTextPlugin('[name]-sass.css');
 const extractLESS = new ExtractTextPlugin('[name]-less.css');
 
 export default function(options: any): any {
-  const Environment = require(root('src', 'environments', options.APP_ENV))
-    .default;
+  const Environment = require(root('src', 'environments', options.APP_ENV)).default;
   const environment = new Environment();
 
   return {
@@ -111,14 +109,7 @@ export default function(options: any): any {
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         environment,
-        chunksSortMode: orderByList([
-          'common',
-          'polyfills',
-          'vendor',
-          'main',
-          'offline',
-          'css'
-        ]),
+        chunksSortMode: orderByList(['common', 'polyfills', 'vendor', 'main', 'offline', 'css']),
         inject: 'body'
       }),
       new webpack.optimize.CommonsChunkPlugin({

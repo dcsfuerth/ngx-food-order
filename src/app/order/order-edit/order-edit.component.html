@@ -1,0 +1,44 @@
+<h1>Edit order</h1>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Product</th>
+      <th>User</th>
+      <th>Number of products</th>
+      <th>Price item</th>
+      <th>Price sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of orderItems; let i = index; trackBy: trackById">
+      <td>
+        <button type="button" class="btn btn-danger" (click)="removeOrderItem(i)">
+          <i class="fa fa-remove" aria-hidden="true"></i>
+        </button>
+      </td>
+      <td>
+        <select class="form-control" [formControl]="getFormGroup(i).get('productId')">
+          <option *ngFor="let product of products" [value]="product.id">{{ product.label }}</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-control" [formControl]="getFormGroup(i).get('userId')">
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+      </td>
+      <td>
+        <input type="number" class="form-control" placeholder="number of products" min="1" [formControl]="getFormGroup(i).get('numberOfProducts')">
+      </td>
+      <td class="text-right">{{ item.product.price | currency:'EUR':true }}</td>
+      <td class="text-right">{{ item.priceSum | currency:'EUR':true }}</td>
+    </tr>
+    <tr>
+      <th colspan="5">Sum</th>
+      <td class="text-right">{{ totalPrice | currency:'EUR':true }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" (click)="addOrderItem()">Add order item</button>

@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -20,11 +20,24 @@ import { translations as en } from './locale/en';
 import { translations as de } from './locale/de';
 
 @NgModule({
-  declarations: [ProductsPageComponent, NewProductPageComponent, EditProductPageComponent, ProductFormComponent],
+  declarations: [
+    ProductsPageComponent,
+    NewProductPageComponent,
+    EditProductPageComponent,
+    ProductFormComponent
+  ],
   providers: [
     ProductsActions,
-    { provide: APP_REDUCERS, useValue: { name: PRODUCTS_COLLECTION_KEY, reducer: productsReducer }, multi: true },
-    { provide: APP_REDUCERS, useValue: { name: PRODUCTS_ENTITY_KEY, reducer: currentProductReducer }, multi: true },
+    {
+      provide: APP_REDUCERS,
+      useValue: { name: PRODUCTS_COLLECTION_KEY, reducer: productsReducer },
+      multi: true
+    },
+    {
+      provide: APP_REDUCERS,
+      useValue: { name: PRODUCTS_ENTITY_KEY, reducer: currentProductReducer },
+      multi: true
+    },
     { provide: APP_EPICS, useValue: redirectAfterSaveEpic, multi: true },
     {
       provide: APP_TRANSLATIONS,
@@ -37,6 +50,12 @@ import { translations as de } from './locale/de';
       multi: true
     }
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, RouterModule.forChild(productsRoutes)]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    RouterModule.forChild(productsRoutes)
+  ]
 })
 export class ProductsModule {}

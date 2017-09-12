@@ -1,33 +1,47 @@
-import { List } from 'immutable';
-import { productsSelectors } from '../../products/backend/products.selectors';
-import {
-  normalizedCollectionSelectorsFactory,
-  INormalizedCollectionSelectors,
-  IState,
-  createSelector
-} from '@dcs/ngx-utils';
+import { Selector } from 'reselect';
+import { List, Map } from 'immutable';
+import { IState, createSelector } from '@dcs/ngx-utils';
 
+import { productsSelectors } from '../../products/backend/products.selectors';
+import { IOrderState } from './order.reducer';
 import { OrderItem } from './order-item.class';
-import { Product } from '../../products/backend/product.class';
 import { User } from '../../users/backend/user.class';
-import { ORDER_COLLECTION_NAME } from './order.constants';
-import { orderSchema } from './order.schema';
 import { usersMapSelector } from '../../users/backend/users.selectors';
 
-export const orderSelectors: INormalizedCollectionSelectors<OrderItem> = normalizedCollectionSelectorsFactory(
-  ORDER_COLLECTION_NAME,
-  OrderItem,
-  orderSchema
+export const orderSubStateSelector: (state: IState) => IOrderState = state => state.get('order');
+export const orderLoadedSelector: (state: IState) => IOrderState = state =>
+  state.getIn(['order', 'loaded']);
+export const orderRawItemsSelector: (state: IState) => List<Map<string, number>> = state =>
+  state.getIn(['order', 'entity', 'items']);
+
+export const orderItemsSelector: Selector<IState, List<OrderItem>> = createSelector(
+  [orderRawItemsSelector, productsSelectors.modelsMapSelector, usersMapSelector],
+  (items, productsMap, usersMap) => {
+    return items.map((rawItem: any) => {
+      rawItem = rawItem.merge({
+        product: productsMap.get(String(rawItem.get('productId'))),
+        user: usersMap.get(String(rawItem.get('userId')))
+      });
+      return new OrderItem(rawItem);
+    });
+  }
 );
 
-orderSelectors.modelsSelector = createSelector(
-  [orderSelectors.subStateSelector, orderSelectors.idsSelector, productsSelectors.modelsMapSelector, usersMapSelector],
-  (orderSubState, ids, productsMap, usersMap) => {
-    return orderSubState.get('result').map(id => {
-      const order = new OrderItem(orderSubState.getIn(['entities', 'item', String(id)]));
-      const product = productsMap.get(String(order.get('productId'))) || new Product();
-      const user = usersMap.get(String(order.get('userId'))) || new User();
-      return order.set('product', product).set('user', user);
-    });
+export const totalPriceSelector: Selector<IState, number> = createSelector(
+  [orderItemsSelector],
+  orderItems => {
+    return orderItems.reduce((sum, item) => {
+      return sum + item.priceSum;
+    }, 0);
+  }
+);
+
+export const totalPriceByUserSelector: Selector<IState, Map<User, number>> = createSelector(
+  [orderItemsSelector],
+  orderItems => {
+    return orderItems
+      .groupBy(item => item.get('user'))
+      .toMap()
+      .map((group, user) => group.reduce((sum, item) => sum + item.priceSum, 0));
   }
 );

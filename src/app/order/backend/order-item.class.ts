@@ -1,11 +1,9 @@
 import { Record } from 'immutable';
-import { EmbeddedRecord } from '@dcs/ngx-utils';
 
 import { Product } from '../../products/backend/product.class';
 import { User } from '../../users/backend/user.class';
 
-export interface IOrder {
-  id: number;
+export interface IOrderItem {
   userId: number;
   productId: number;
   numberOfProducts: number;
@@ -14,7 +12,6 @@ export interface IOrder {
 }
 
 export const DEFAULT_VALUES = {
-  id: 0,
   userId: 0,
   productId: 0,
   numberOfProducts: 0,
@@ -22,16 +19,14 @@ export const DEFAULT_VALUES = {
   product: new Product()
 };
 
-export class OrderItem extends Record(DEFAULT_VALUES) implements IOrder {
-  public readonly id: number;
+export class OrderItem extends Record(DEFAULT_VALUES) implements IOrderItem {
   public readonly userId: number;
   public readonly productId: number;
   public readonly numberOfProducts: number;
-  @EmbeddedRecord(User) public readonly user: User;
-  @EmbeddedRecord(Product) public readonly product: Product;
+  public readonly user: User;
+  public readonly product: Product;
 
   get priceSum(): number {
-    console.log('hier', this.getIn(['product', 'price']) || 0, this.numberOfProducts);
     return (this.getIn(['product', 'price']) || 0) * this.numberOfProducts;
   }
 }

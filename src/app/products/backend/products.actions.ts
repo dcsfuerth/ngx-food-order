@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { dispatch } from '@angular-redux/store';
-import { schema, normalize } from 'normalizr';
+import { normalize } from 'normalizr';
 import { IAction, RestService, generateCrudActionNames, ICrudActionNames } from '@dcs/ngx-utils';
 
 import { Product } from './product.class';

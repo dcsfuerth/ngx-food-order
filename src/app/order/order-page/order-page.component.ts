@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { List } from 'immutable';
 import { Observable } from 'rxjs';
 import { ContainerComponent } from '@dcs/ngx-utils';
 
-import { orderSelectors } from '../backend/order.selectors';
-import { OrderItem } from '../backend/order-item.class';
 import { OrderActions } from '../backend/order.actions';
 import { UsersActions } from '../../users/backend/users.actions';
 import { ProductsActions } from '../../products/backend/products.actions';
+import { productsSelectors } from '../../products/backend/products.selectors';
+import { loadedSelector } from '../../users/backend/users.selectors';
+import { orderLoadedSelector } from '../backend/order.selectors';
 
 @Component({
   selector: 'dcs-order-page',
   templateUrl: './order-page.component.html'
 })
 export class OrderPageComponent extends ContainerComponent implements OnInit {
-  @select(orderSelectors.modelsSelector) public order$: Observable<List<OrderItem>>;
-  public order: List<OrderItem>;
+  @select(productsSelectors.loadedSelector) public productsLoaded$: Observable<boolean>;
+  @select(loadedSelector) public usersLoaded$: Observable<boolean>;
+  @select(orderLoadedSelector) public orderLoaded$: Observable<boolean>;
+  public productsLoaded: boolean;
+  public usersLoaded: boolean;
+  public orderLoaded: boolean;
 
   constructor(
     private actions: OrderActions,
@@ -27,16 +31,20 @@ export class OrderPageComponent extends ContainerComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.valueFromObservable(this.order$, 'order');
+    this.valueFromObservable(this.productsLoaded$, 'productsLoaded');
+    this.valueFromObservable(this.usersLoaded$, 'usersLoaded');
+    this.valueFromObservable(this.orderLoaded$, 'orderLoaded');
 
-    this.productsActions.read();
-    this.usersActions.read();
-    this.actions.read();
-  }
+    if (!this.productsLoaded) {
+      this.productsActions.read();
+    }
 
-  get priceTotal(): number {
-    return this.order.reduce((sum, item) => {
-      return sum + item.priceSum;
-    }, 0);
+    if (!this.usersLoaded) {
+      this.usersActions.read();
+    }
+
+    if (!this.orderLoaded) {
+      this.actions.read();
+    }
   }
 }

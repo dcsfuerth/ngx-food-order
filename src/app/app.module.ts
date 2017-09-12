@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { AppTranslateModule, APP_TRANSLATIONS, APP_REDUCERS } from '@dcs/ngx-utils';
+import { AppTranslateModule, APP_TRANSLATIONS } from '@dcs/ngx-utils';
 
 import { routes } from './app.routes';
 import { translations as de } from './locale/de';

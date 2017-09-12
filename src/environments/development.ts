@@ -1,5 +1,5 @@
-import { GenericStoreEnhancer, Middleware } from 'redux';
-import { IEnvironment, loggerMiddleware, ISettings, DefaultEnvironment, persistStateEnhancer } from '@dcs/ngx-utils';
+import { Middleware } from 'redux';
+import { IEnvironment, loggerMiddleware, DefaultEnvironment } from '@dcs/ngx-utils';
 
 export default class DevelopmentEnvironment extends DefaultEnvironment implements IEnvironment {
   public apiUrl = '//localhost:3001';
