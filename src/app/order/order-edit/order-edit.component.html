@@ -1,14 +1,14 @@
-<h1>Edit order</h1>
+<h1>{{ 'ORDER_EDIT_TITLE' | translate }}</h1>
 
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
       <th>&nbsp;</th>
-      <th>Product</th>
-      <th>User</th>
-      <th>Number of products</th>
-      <th>Price item</th>
-      <th>Price sum</th>
+      <th>{{ 'ORDER_PRODUCT' | translate }}</th>
+      <th>{{ 'ORDER_USER' | translate }}</th>
+      <th>{{ 'ORDER_ITEMS' | translate }}</th>
+      <th>{{ 'ORDER_PRICE_ITEM_SINGLE' | translate }}</th>
+      <th>{{ 'ORDER_PRICE_ITEM_SUM' | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -35,10 +35,10 @@
       <td class="text-right">{{ item.priceSum | currency:'EUR':true }}</td>
     </tr>
     <tr>
-      <th colspan="5">Sum</th>
+      <th colspan="5">{{ 'ORDER_SUM' | translate }}</th>
       <td class="text-right">{{ totalPrice | currency:'EUR':true }}</td>
     </tr>
   </tbody>
 </table>
 
-<button class="btn btn-primary" (click)="addOrderItem()">Add order item</button>
+<button class="btn btn-primary" (click)="addOrderItem()">{{ 'ORDER_ADD_ITEM' | translate }}</button>

@@ -5,7 +5,7 @@
   "codemetrics.nodeconfiguration.AnyKeyword": 0,
   "files.autoSave": "onFocusChange",
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "none",
+  "prettier.trailingComma": "all",
   "search.exclude": {
     "**/node_modules": true,
     "build": true,

@@ -1,13 +1,13 @@
-<h1>Order summary</h1>
+<h1>{{ 'ORDER_SUMMARY_TITLE' | translate }}</h1>
 
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th>Product</th>
-      <th>User</th>
-      <th>Items</th>
-      <th>Price item</th>
-      <th>Price sum</th>
+      <th>{{ 'ORDER_PRODUCT' | translate }}</th>
+      <th>{{ 'ORDER_USER' | translate }}</th>
+      <th>{{ 'ORDER_ITEMS' | translate }}</th>
+      <th>{{ 'ORDER_PRICE_ITEM_SINGLE' | translate }}</th>
+      <th>{{ 'ORDER_PRICE_ITEM_SUM' | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
     </tr>
 
     <tr>
-      <th colspan="5">Sum</th>
+      <th colspan="5">{{ 'ORDER_SUM' | translate }}</th>
     </tr>
     <tr *ngFor="let userSum of totalPriceByUser">
       <td colspan="4">{{ userSum[0].name }}</td>
@@ -28,7 +28,7 @@
     </tr>
 
     <tr>
-      <th colspan="4">Sum total</th>
+      <th colspan="4">{{ 'ORDER_SUM_TOTAL' | translate }}</th>
       <td class="text-right">{{ totalPrice | currency:'EUR':true }}</td>
     </tr>
   </tbody>
