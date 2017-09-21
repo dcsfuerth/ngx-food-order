@@ -1,6 +1,6 @@
 import { UPDATE_LOCATION } from '@angular-redux/router';
 import { ActionsObservable } from 'redux-observable';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { IAction } from '@dcs/ngx-utils';
 
 import { actionNames } from './products.actions';

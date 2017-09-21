@@ -2,8 +2,10 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { productsSelectors } from '../../products/backend/products.selectors';
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { List, fromJS } from 'immutable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
 
 import { orderRawItemsSelector } from '../backend/order.selectors';
 import { usersSelector } from '../../users/backend/users.selectors';
@@ -16,7 +18,7 @@ import { OrderSummaryComponent } from '../order-summary/order-summary.component'
 
 @Component({
   selector: 'dcs-order-edit',
-  templateUrl: './order-edit.component.html'
+  templateUrl: './order-edit.component.html',
 })
 export class OrderEditComponent extends OrderSummaryComponent implements OnInit {
   @select(usersSelector) public users$: Observable<List<User>>;
@@ -60,7 +62,7 @@ export class OrderEditComponent extends OrderSummaryComponent implements OnInit 
           cancelUpdate.next();
           this.actions.update(value, cancelUpdate);
         }
-      }
+      },
     );
   }
 
@@ -84,7 +86,7 @@ export class OrderEditComponent extends OrderSummaryComponent implements OnInit 
     return this.fb.group({
       productId: [item.productId, Validators.required],
       userId: [item.userId, Validators.required],
-      numberOfProducts: [item.numberOfProducts, [Validators.required, Validators.min(1)]]
+      numberOfProducts: [item.numberOfProducts, [Validators.required, Validators.min(1)]],
     });
   }
 }

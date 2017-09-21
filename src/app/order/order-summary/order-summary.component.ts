@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { List, Map } from 'immutable';
 import { ContainerComponent } from '@dcs/ngx-utils';
 
@@ -9,13 +9,13 @@ import { User } from '../../users/backend/user.class';
 import {
   orderItemsSelector,
   totalPriceSelector,
-  totalPriceByUserSelector
+  totalPriceByUserSelector,
 } from '../backend/order.selectors';
 import { OrderItem } from '../backend/order-item.class';
 
 @Component({
   selector: 'dcs-order-summary',
-  templateUrl: './order-summary.component.html'
+  templateUrl: './order-summary.component.html',
 })
 export class OrderSummaryComponent extends ContainerComponent implements OnInit {
   @select(orderItemsSelector) public orderItems$: Observable<List<OrderItem>>;

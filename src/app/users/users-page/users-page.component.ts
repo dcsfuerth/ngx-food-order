@@ -2,7 +2,7 @@ import { List } from 'immutable';
 import { select } from '@angular-redux/store';
 import { Component, OnInit } from '@angular/core';
 import { ContainerComponent } from '@dcs/ngx-utils';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { UsersActions } from '../backend/users.actions';
 import { User } from '../backend/user.class';
@@ -10,7 +10,7 @@ import { usersSelector, updatingSelector, loadedSelector } from '../backend/user
 
 @Component({
   selector: 'dcs-users-page',
-  templateUrl: './users-page.component.html'
+  templateUrl: './users-page.component.html',
 })
 export class UsersPageComponent extends ContainerComponent implements OnInit {
   @select(usersSelector) public users$: Observable<List<User>>;

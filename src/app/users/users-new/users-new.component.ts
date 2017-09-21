@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { User } from '../backend/user.class';
 import { UsersActions } from '../backend/users.actions';
@@ -8,7 +8,7 @@ import { updatingSelector } from '../backend/users.selectors';
 
 @Component({
   selector: 'dcs-users-new',
-  templateUrl: './users-new.component.html'
+  templateUrl: './users-new.component.html',
 })
 export class UsersNewComponent implements OnInit {
   @select(updatingSelector) public updating$: Observable<boolean>;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { ContainerComponent } from '@dcs/ngx-utils';
 
 import { OrderActions } from '../backend/order.actions';
@@ -12,7 +12,7 @@ import { orderLoadedSelector } from '../backend/order.selectors';
 
 @Component({
   selector: 'dcs-order-page',
-  templateUrl: './order-page.component.html'
+  templateUrl: './order-page.component.html',
 })
 export class OrderPageComponent extends ContainerComponent implements OnInit {
   @select(productsSelectors.loadedSelector) public productsLoaded$: Observable<boolean>;
@@ -25,7 +25,7 @@ export class OrderPageComponent extends ContainerComponent implements OnInit {
   constructor(
     private actions: OrderActions,
     private productsActions: ProductsActions,
-    private usersActions: UsersActions
+    private usersActions: UsersActions,
   ) {
     super();
   }

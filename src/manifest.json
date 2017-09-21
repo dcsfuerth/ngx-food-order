@@ -1,0 +1,15 @@
+{
+  "short_name": "DCSFoodOrder",
+  "name": "DCS Food Order",
+  "icons": [
+    {
+      "src": "assets/appicon.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#2196F3",
+  "background_color": "#2196F3",
+  "display": "standalone"
+}

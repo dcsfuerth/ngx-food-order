@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { dispatch } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { ICrudActionNames, IAction, RestService, generateCrudActionNames } from '@dcs/ngx-utils';
 
 import { ORDER_COLLECTION_NAME } from './order.constants';
@@ -17,14 +17,14 @@ export class OrderActions {
   public read(): IAction {
     return {
       type: actionNames.read,
-      payload: this.http.get('order')
+      payload: this.http.get('order'),
     };
   }
 
   @dispatch()
   public addEmptyItem(): IAction {
     return {
-      type: ORDER_ADD_EMPTY_ITEM
+      type: ORDER_ADD_EMPTY_ITEM,
     };
   }
 
@@ -34,8 +34,8 @@ export class OrderActions {
       type: actionNames.update,
       payload: this.http.put('order', { items }),
       meta: {
-        cancel: cancelAction
-      }
+        cancel: cancelAction,
+      },
     };
   }
 }

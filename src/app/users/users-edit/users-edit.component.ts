@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
@@ -10,7 +10,7 @@ import { currentUserSelector, updatingSelector } from '../backend/users.selector
 
 @Component({
   selector: 'dcs-users-edit',
-  templateUrl: './users-edit.component.html'
+  templateUrl: './users-edit.component.html',
 })
 export class UsersEditComponent extends ContainerComponent implements OnInit {
   @select(currentUserSelector) public user$: Observable<User>;

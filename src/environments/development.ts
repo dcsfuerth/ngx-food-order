@@ -6,7 +6,6 @@ export default class DevelopmentEnvironment extends DefaultEnvironment implement
   public throwOnSchemaError = false;
   public pageTitle = 'DCS Food Order (DEVELOPMENT)';
   public base = '/';
-
   public additionalMiddleware: Middleware[] = [loggerMiddleware];
   // public additionalEnhancers: GenericStoreEnhancer[] = [persistStateEnhancer()];
 }
