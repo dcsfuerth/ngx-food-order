@@ -1,4 +1,4 @@
-import { List } from 'Immutable';
+import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';

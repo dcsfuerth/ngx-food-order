@@ -8,8 +8,6 @@ import { ContainerComponent, INormalizedCollectionState, hasModel } from '@dcs/n
 import { ProductsActions } from '../backend/products.actions';
 import { currentProductSelectors, productsSelectors } from '../backend/products.selectors';
 import { Product } from '../backend/product.class';
-import { fromJS } from 'immutable';
-import { updatingSelector } from '../../users/backend/users.selectors';
 
 @Component({
   selector: 'dcs-edit-product-page',

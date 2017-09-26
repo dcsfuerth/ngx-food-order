@@ -20,11 +20,11 @@ export const orderItemsSelector: Selector<IState, List<OrderItem>> = createSelec
     return items.map((rawItem: any) => {
       rawItem = rawItem.merge({
         product: productsMap.get(String(rawItem.get('productId'))),
-        user: usersMap.get(String(rawItem.get('userId')))
+        user: usersMap.get(String(rawItem.get('userId'))),
       });
       return new OrderItem(rawItem);
     });
-  }
+  },
 );
 
 export const totalPriceSelector: Selector<IState, number> = createSelector(
@@ -33,7 +33,7 @@ export const totalPriceSelector: Selector<IState, number> = createSelector(
     return orderItems.reduce((sum, item) => {
       return sum + item.priceSum;
     }, 0);
-  }
+  },
 );
 
 export const totalPriceByUserSelector: Selector<IState, Map<User, number>> = createSelector(
@@ -42,6 +42,6 @@ export const totalPriceByUserSelector: Selector<IState, Map<User, number>> = cre
     return orderItems
       .groupBy(item => item.get('user'))
       .toMap()
-      .map((group, user) => group.reduce((sum, item) => sum + item.priceSum, 0));
-  }
+      .map(group => group.reduce((sum, item) => sum + item.priceSum, 0));
+  },
 );

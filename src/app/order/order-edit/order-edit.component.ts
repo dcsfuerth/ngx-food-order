@@ -70,7 +70,7 @@ export class OrderEditComponent extends OrderSummaryComponent implements OnInit 
     return this.form.controls[index] as FormGroup;
   }
 
-  public trackById(index: number, item: any) {
+  public trackById(_: number, item: any) {
     return item.id;
   }
 
