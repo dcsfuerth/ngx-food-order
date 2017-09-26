@@ -6,10 +6,11 @@ import { Product } from '../backend/product.class';
 
 @Component({
   selector: 'dcs-product-form',
-  templateUrl: './product-form.component.html'
+  templateUrl: './product-form.component.html',
 })
 export class ProductFormComponent extends PresentationalComponent implements OnChanges {
   @Input() public product: Product;
+  @Input() public updating: boolean = false;
 
   @Output() public onSubmitForm: EventEmitter<Product> = new EventEmitter();
 
@@ -33,7 +34,7 @@ export class ProductFormComponent extends PresentationalComponent implements OnC
       id: [''],
       articleId: ['', [Validators.required, Validators.pattern('a-[0-9]{5}')]],
       label: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(0.01)]]
+      price: ['', [Validators.required, Validators.min(0.01)]],
     });
   }
 

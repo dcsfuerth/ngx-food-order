@@ -1,3 +1,10 @@
 <h1>{{ 'PRODUCTS_LIST_EDIT' | translate }}</h1>
 
-<dcs-product-form [product]="product" (onSubmitForm)="updateProduct($event)"></dcs-product-form>
+<dcs-product-form *ngIf="!loading; else loader" [product]="product" [updating]="updating" (onSubmitForm)="updateProduct($event)"></dcs-product-form>
+
+<ng-template #loader>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+      aria-valuemax="100" style="width: 100%"></div>
+  </div>
+</ng-template>

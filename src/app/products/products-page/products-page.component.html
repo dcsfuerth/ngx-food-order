@@ -17,7 +17,15 @@
       <td>{{ product.label }}</td>
       <td>{{ product.price | currency:'EUR':true }}</td>
       <td>
-        <button type="button" class="btn btn-danger" [disabled]="updating" (click)="deleteProduct(product)">{{ 'PRODUCTS_LIST_DELETE' | translate }}</button>
+        <button type="button" class="btn btn-danger" [disabled]="updating$ | async" (click)="deleteProduct(product)">{{ 'PRODUCTS_LIST_DELETE' | translate }}</button>
+      </td>
+    </tr>
+    <tr *ngIf="loading$ | async">
+      <td colspan="4">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100" style="width: 100%"></div>
+        </div>
       </td>
     </tr>
   </tbody>

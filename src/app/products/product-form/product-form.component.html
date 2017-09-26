@@ -28,6 +28,6 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ 'PRODUCTS_SAVE' | translate }}</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid || updating">{{ 'PRODUCTS_SAVE' | translate }}</button>
   </form>
 </div>

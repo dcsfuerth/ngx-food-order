@@ -8,6 +8,8 @@ import { ContainerComponent, INormalizedCollectionState, hasModel } from '@dcs/n
 import { ProductsActions } from '../backend/products.actions';
 import { currentProductSelectors, productsSelectors } from '../backend/products.selectors';
 import { Product } from '../backend/product.class';
+import { fromJS } from 'immutable';
+import { updatingSelector } from '../../users/backend/users.selectors';
 
 @Component({
   selector: 'dcs-edit-product-page',
@@ -16,6 +18,10 @@ import { Product } from '../backend/product.class';
 export class EditProductPageComponent extends ContainerComponent implements OnInit {
   @select(currentProductSelectors.modelSelector) public product$: Observable<Product>;
   public product: Product;
+  @select(currentProductSelectors.updatingSelector) public updating$: Observable<boolean>;
+  public updating: boolean;
+  @select(currentProductSelectors.loadingSelector) public loading$: Observable<boolean>;
+  public loading: boolean;
   @select(productsSelectors.subStateSelector)
   private productsState$: Observable<INormalizedCollectionState>;
   private productsState: INormalizedCollectionState;
@@ -27,6 +33,8 @@ export class EditProductPageComponent extends ContainerComponent implements OnIn
   public ngOnInit() {
     this.valueFromObservable(this.product$, 'product');
     this.valueFromObservable(this.productsState$, 'productsState');
+    this.valueFromObservable(this.loading$, 'loading');
+    this.valueFromObservable(this.updating$, 'updating');
 
     this.subscribeToObservable(this.route.params, params => {
       if (String(this.product.id) !== params.id) {

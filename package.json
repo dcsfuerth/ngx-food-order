@@ -33,7 +33,7 @@
     "prepush": "npm run build:production",
     "version": "run-s  build:production changelog && git add CHANGELOG.md",
     "postversion": "git push --no-verify && git push --no-verify --tags",
-    "backend:mock": "json-server mock/db.json --port 3001 --delay 300"
+    "backend:mock": "json-server mock/db.json --port 3001 --delay 1000"
   },
   "keywords": [],
   "author": "Marc Remolt <marc.remolt@dcs-fuerth.de>",
