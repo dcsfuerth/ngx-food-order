@@ -2,9 +2,9 @@ import { Middleware, GenericStoreEnhancer } from 'redux';
 import {
   IEnvironment,
   loggerMiddleware,
-  persistStateEnhancer,
-  DefaultEnvironment
+  DefaultEnvironment,
 } from '@dcs/ngx-utils';
+
 export default class StagingEnvironment extends DefaultEnvironment
   implements IEnvironment {
   public apiUrl = '//localhost:3001';
@@ -13,5 +13,5 @@ export default class StagingEnvironment extends DefaultEnvironment
   public base = '/';
 
   public additionalMiddleware: Middleware[] = [loggerMiddleware];
-  public additionalEnhancers: GenericStoreEnhancer[] = [persistStateEnhancer()];
+  public additionalEnhancers: GenericStoreEnhancer[] = [];
 }

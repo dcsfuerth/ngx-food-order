@@ -94,6 +94,8 @@ export default function(options: any): any {
       new webpack.NamedModulesPlugin(),
       new FriendlyErrorsWebpackPlugin(),
 
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /de|fr/),
+
       new HtmlWebpackPlugin({
         template: 'src/index.ejs',
         environment,
