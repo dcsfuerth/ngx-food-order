@@ -1,7 +1,12 @@
 import { Middleware } from 'redux';
-import { IEnvironment, loggerMiddleware, DefaultEnvironment } from '@dcs/ngx-utils';
+import {
+  IEnvironment,
+  loggerMiddleware,
+  DefaultEnvironment,
+} from '@dcs/ngx-utils';
 
-export default class DevelopmentEnvironment extends DefaultEnvironment implements IEnvironment {
+export default class DevelopmentEnvironment extends DefaultEnvironment
+  implements IEnvironment {
   public apiUrl = '//localhost:3001';
   public throwOnSchemaError = false;
   public pageTitle = 'DCS Food Order (DEVELOPMENT)';

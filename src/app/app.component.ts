@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     console.timeEnd('bootstrap angular');
+    console.log('Site load:', performance.now().toFixed(2), 'ms');
     this.logBuildSetup(this.translate.currentLang);
     // window['app'] = this;
   }
