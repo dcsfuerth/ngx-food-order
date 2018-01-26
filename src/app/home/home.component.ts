@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { ContainerComponent } from '@dcs/ngx-utils';
 
+import { ContainerComponent } from '../utils/container-component';
 import { HomeActions } from './backend/home.actions';
 import { homeGreetingSelector } from './backend/home.selectors';
 
 @Component({
   selector: 'dcs-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent extends ContainerComponent implements OnInit {
   @select(homeGreetingSelector) public greeting$: Observable<string>;

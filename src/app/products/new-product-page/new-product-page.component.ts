@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
-import { ContainerComponent } from '@dcs/ngx-utils';
 
+import { ContainerComponent } from '../../utils/container-component';
 import { ProductsActions } from '../backend/products.actions';
 import { currentProductSelectors } from '../backend/products.selectors';
 import { Product } from '../backend/product.class';
@@ -11,9 +11,11 @@ import { Product } from '../backend/product.class';
   selector: 'dcs-new-product-page',
   templateUrl: './new-product-page.component.html',
 })
-export class NewProductPageComponent extends ContainerComponent implements OnInit {
+export class NewProductPageComponent extends ContainerComponent
+  implements OnInit {
   public product: Product;
-  @select(currentProductSelectors.updatingSelector) public updating$: Observable<boolean>;
+  @select(currentProductSelectors.updatingSelector)
+  public updating$: Observable<boolean>;
   public updating: boolean;
 
   constructor(private actions: ProductsActions) {

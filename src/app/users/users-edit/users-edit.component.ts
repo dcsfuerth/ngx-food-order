@@ -2,11 +2,14 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { ContainerComponent } from '@dcs/ngx-utils';
 
+import { ContainerComponent } from '../../utils/container-component';
 import { UsersActions } from '../backend/users.actions';
 import { User } from '../backend/user.class';
-import { currentUserSelector, updatingSelector } from '../backend/users.selectors';
+import {
+  currentUserSelector,
+  updatingSelector,
+} from '../backend/users.selectors';
 
 @Component({
   selector: 'dcs-users-edit',

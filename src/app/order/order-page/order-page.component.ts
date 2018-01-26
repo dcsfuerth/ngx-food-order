@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { ContainerComponent } from '@dcs/ngx-utils';
 
+import { ContainerComponent } from '../../utils/container-component';
 import { OrderActions } from '../backend/order.actions';
 import { UsersActions } from '../../users/backend/users.actions';
 import { ProductsActions } from '../../products/backend/products.actions';
@@ -15,7 +15,8 @@ import { orderLoadedSelector } from '../backend/order.selectors';
   templateUrl: './order-page.component.html',
 })
 export class OrderPageComponent extends ContainerComponent implements OnInit {
-  @select(productsSelectors.loadedSelector) public productsLoaded$: Observable<boolean>;
+  @select(productsSelectors.loadedSelector)
+  public productsLoaded$: Observable<boolean>;
   @select(loadedSelector) public usersLoaded$: Observable<boolean>;
   @select(orderLoadedSelector) public orderLoaded$: Observable<boolean>;
   public productsLoaded: boolean;
